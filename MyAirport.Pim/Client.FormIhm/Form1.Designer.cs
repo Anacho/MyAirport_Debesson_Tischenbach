@@ -254,8 +254,9 @@
             this.AnnulerBtn.Name = "AnnulerBtn";
             this.AnnulerBtn.Size = new System.Drawing.Size(110, 23);
             this.AnnulerBtn.TabIndex = 3;
-            this.AnnulerBtn.Text = "Annuler";
+            this.AnnulerBtn.Text = "Réinitialiser";
             this.AnnulerBtn.UseVisualStyleBackColor = true;
+            this.AnnulerBtn.Click += new System.EventHandler(this.AnnulerBtn_Click);
             // 
             // AjouterBtn
             // 

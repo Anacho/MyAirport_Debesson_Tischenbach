@@ -45,14 +45,15 @@ namespace Client.FormIhm
                 }
                 catch (ApplicationException appEx)
                 {
-                    CompagnieTB.Text =
-                        Ligne1TB.Text =
-                            Ligne2TB.Text = JourExploitTB.Text = ItineraireTB.Text = ClasseBagageTB.Text = "";
-
                     ContinuationCB.Checked = RushCB.Checked = false;
                     CompagnieTB.Enabled = Ligne1TB.Enabled = Ligne2TB.Enabled = JourExploitTB.Enabled = ItineraireTB.Enabled =
                         ClasseBagageTB.Enabled = ContinuationCB.Enabled = RushCB.Enabled = true;
                     codeIATATB.Enabled = false;
+
+                    CompagnieTB.Text =
+                        Ligne1TB.Text =
+                            Ligne2TB.Text = JourExploitTB.Text = ItineraireTB.Text = ClasseBagageTB.Text = "";
+
                 }
                 catch(Exception ex)
                 {
@@ -118,16 +119,20 @@ namespace Client.FormIhm
             {
                 MessageBox.Show("Une erreur s’est produite.\nMerci de bien vouloir réessayer ultérieurement ou de contacter votre administrateur.", "Erreur !", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            finally
-            {
-                //CompagnieTB.Text =
-                //           Ligne1TB.Text =
-                //               Ligne2TB.Text = JourExploitTB.Text = ItineraireTB.Text = ClasseBagageTB.Text = codeIATATB.Text = "";
+        }
 
-                //ContinuationCB.Checked = RushCB.Checked = false;
-                //CompagnieTB.Enabled = Ligne1TB.Enabled = Ligne2TB.Enabled = JourExploitTB.Enabled = ItineraireTB.Enabled = codeIATATB.Enabled = 
-                //    ClasseBagageTB.Enabled = ContinuationCB.Enabled = RushCB.Enabled = true;
-            }
+        private void AnnulerBtn_Click(object sender, EventArgs e)
+        {
+            ContinuationCB.Checked = RushCB.Checked = false;
+            CompagnieTB.Enabled = Ligne1TB.Enabled = Ligne2TB.Enabled = JourExploitTB.Enabled = ItineraireTB.Enabled = codeIATATB.Enabled =
+                ClasseBagageTB.Enabled = ContinuationCB.Enabled = RushCB.Enabled = true;
+
+            CompagnieTB.Text =
+                       Ligne1TB.Text =
+                           Ligne2TB.Text = JourExploitTB.Text = ItineraireTB.Text = ClasseBagageTB.Text = codeIATATB.Text = "";
+
+            AjouterBtn.Enabled = true;
+            AnnulerBtn.Enabled = true;
         }
     }
 }
