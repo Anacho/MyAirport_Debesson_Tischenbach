@@ -17,3 +17,10 @@ C:\Users\Quentin\Documents\Visual Studio 2015\Projects\MyAirport.Pim\Client.Form
 C:\Users\Quentin\Documents\Visual Studio 2015\Projects\MyAirport.Pim\Client.FormIhm\obj\Debug\Client.FormIhm.pdb
 C:\Users\Quentin\Documents\Visual Studio 2015\Projects\MyAirport.Pim\Client.FormIhm\bin\Debug\Model.Sql.dll
 C:\Users\Quentin\Documents\Visual Studio 2015\Projects\MyAirport.Pim\Client.FormIhm\bin\Debug\Model.Sql.pdb
+C:\Users\Quentin\Documents\Visual Studio 2015\Projects\MyAirport_Debesson_Tischenbach\MyAirport.Pim\Client.FormIhm\bin\Debug\Client.FormIhm.exe.config
+C:\Users\Quentin\Documents\Visual Studio 2015\Projects\MyAirport_Debesson_Tischenbach\MyAirport.Pim\Client.FormIhm\obj\Debug\Client.FormIhm.exe
+C:\Users\Quentin\Documents\Visual Studio 2015\Projects\MyAirport_Debesson_Tischenbach\MyAirport.Pim\Client.FormIhm\obj\Debug\Client.FormIhm.pdb
+C:\Users\Quentin\Documents\Visual Studio 2015\Projects\MyAirport_Debesson_Tischenbach\MyAirport.Pim\Client.FormIhm\obj\Debug\Client.FormIhm.csprojResolveAssemblyReference.cache
+C:\Users\Quentin\Documents\Visual Studio 2015\Projects\MyAirport_Debesson_Tischenbach\MyAirport.Pim\Client.FormIhm\obj\Debug\Client.FormIhm.Form1.resources
+C:\Users\Quentin\Documents\Visual Studio 2015\Projects\MyAirport_Debesson_Tischenbach\MyAirport.Pim\Client.FormIhm\obj\Debug\Client.FormIhm.Properties.Resources.resources
+C:\Users\Quentin\Documents\Visual Studio 2015\Projects\MyAirport_Debesson_Tischenbach\MyAirport.Pim\Client.FormIhm\obj\Debug\Client.FormIhm.csproj.GenerateResource.Cache

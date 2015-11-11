@@ -86,17 +86,9 @@
       <Project>{0147f9a9-1ef4-428c-8c8d-6e84bba622d6}</Project>
       <Name>Entities</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Model.AbstractDefinition\Model.AbstractDefinition.csproj">
-      <Project>{c516b484-dfc4-4eb1-9661-7ae8bec3dd77}</Project>
-      <Name>Model.AbstractDefinition</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Model.Factory\Model.Factory.csproj">
-      <Project>{da940ecb-994d-4403-884d-e1be659db20f}</Project>
-      <Name>Model.Factory</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Model.Natif\Model.Natif.csproj">
-      <Project>{985f3554-1e50-4603-a9a4-5289b72d63d9}</Project>
-      <Name>Model.Natif</Name>
+    <ProjectReference Include="..\Service\Service.csproj">
+      <Project>{f24c376d-a9b8-4edc-86f3-dc4925edc9a5}</Project>
+      <Name>Service</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

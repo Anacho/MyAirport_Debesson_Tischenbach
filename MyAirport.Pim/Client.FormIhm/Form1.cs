@@ -1,14 +1,16 @@
 ﻿using System;
 using System.Windows.Forms;
 using MyAirport.Pim.Entities;
-using MyAirport.Pim.Model;
+using MyAirport.Serveur;
 
 namespace Client.FormIhm
 {
     public partial class Form1 : Form
     {
+        private readonly IService _service;
         public Form1()
         {
+            _service = new MyAirport.Serveur.Service();
             InitializeComponent();
         }
 
@@ -18,7 +20,7 @@ namespace Client.FormIhm
             {
                 try
                 {
-                    var bagage = Factory.Model.GetBagage(codeIATATB.Text);
+                    var bagage = _service.GetBagageByCodeIata(codeIATATB.Text);
                     if (bagage != null)
                     {
                         CompagnieTB.Text = bagage.Compagnie;
@@ -94,7 +96,7 @@ namespace Client.FormIhm
                     Ligne = string.IsNullOrEmpty(Ligne1TB.Text) ? Ligne2TB.Text : Ligne1TB.Text,
                     Itineraire = ItineraireTB.Text
                 };
-                int nbLignes = Factory.Model.CreateBagage(bagage);
+                int nbLignes = _service.CreateBagage(bagage);
                 if (nbLignes == 1)
                 {
                     MessageBox.Show("Bagage enregistré !", "Sauvegarde réussie", MessageBoxButtons.OK,

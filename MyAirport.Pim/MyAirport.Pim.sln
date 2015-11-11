@@ -17,6 +17,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Client.FormIhm", "Client.Fo
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Model.Sql", "Model.Sql\Model.Sql.csproj", "{19123DD4-4358-4412-8703-1FEB1F7FC56A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Service", "Service\Service.csproj", "{F24C376D-A9B8-4EDC-86F3-DC4925EDC9A5}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -47,6 +49,10 @@ Global
 		{19123DD4-4358-4412-8703-1FEB1F7FC56A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{19123DD4-4358-4412-8703-1FEB1F7FC56A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{19123DD4-4358-4412-8703-1FEB1F7FC56A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F24C376D-A9B8-4EDC-86F3-DC4925EDC9A5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F24C376D-A9B8-4EDC-86F3-DC4925EDC9A5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F24C376D-A9B8-4EDC-86F3-DC4925EDC9A5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F24C376D-A9B8-4EDC-86F3-DC4925EDC9A5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
