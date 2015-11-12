@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:ser="http://schemas.microsoft.com/2003/10/Serialization/" xmlns:tns="http://schemas.datacontract.org/2004/07/MyAirport.Pim.Entities" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/MyAirport.Pim.Entities" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+  <xs:complexType name="BagageDefinition">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ClasseBagage" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CodeIata" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Compagnie" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Continuation" type="xs:boolean" />
+      <xs:element minOccurs="0" name="DateVol" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="IdBagage" type="xs:int" />
+      <xs:element minOccurs="0" name="Itineraire" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="JourExploitation" type="xs:short" />
+      <xs:element minOccurs="0" name="Ligne" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="LigneAlpha" type="ser:char" />
+      <xs:element minOccurs="0" name="Rush" type="xs:boolean" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="BagageDefinition" nillable="true" type="tns:BagageDefinition" />
+  <xs:complexType name="RoutageBagage">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="LocalisationEjection" type="xs:int" />
+      <xs:element minOccurs="0" name="LocalisationSureteN1" type="xs:int" />
+      <xs:element minOccurs="0" name="LocalisationSuretetN3" type="xs:int" />
+      <xs:element minOccurs="0" name="NomEjection" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="NomSureteN1" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="NomSureteN3" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="StatutEjection" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="RoutageBagage" nillable="true" type="tns:RoutageBagage" />
+</xs:schema>

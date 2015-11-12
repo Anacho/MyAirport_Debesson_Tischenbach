@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="0a7ac5c1-1750-4a9e-a837-f8d14fb972aa" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://localhost:8733/Design_Time_Addresses/MyAirport.Serveur/Service/mex" Protocol="mex" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="service.wsdl" MetadataType="Wsdl" ID="948f6247-f7d6-4ee0-b5d1-29086b319fdf" SourceId="1" SourceUrl="http://localhost:8733/Design_Time_Addresses/MyAirport.Serveur/Service/mex" />
+    <MetadataFile FileName="service.xsd" MetadataType="Schema" ID="bfde4135-3cb0-430f-89d2-3bd43f5299dc" SourceId="1" SourceUrl="http://localhost:8733/Design_Time_Addresses/MyAirport.Serveur/Service/mex" />
+    <MetadataFile FileName="service1.xsd" MetadataType="Schema" ID="69258e13-9f5f-4b3e-ba8d-0e9f010bd200" SourceId="1" SourceUrl="http://localhost:8733/Design_Time_Addresses/MyAirport.Serveur/Service/mex" />
+    <MetadataFile FileName="MyAirport.Pim.Entities.xsd" MetadataType="Schema" ID="7cbf47c4-38b5-44e1-b21a-62c60ad0995f" SourceId="1" SourceUrl="http://localhost:8733/Design_Time_Addresses/MyAirport.Serveur/Service/mex" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

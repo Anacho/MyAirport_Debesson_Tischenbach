@@ -26,15 +26,3 @@ C:\Users\Quentin\Documents\Visual Studio 2015\Projects\MyAirport_Debesson_Tische
 C:\Users\Quentin\Documents\Visual Studio 2015\Projects\MyAirport_Debesson_Tischenbach\MyAirport.Pim\Client.FormIhm\obj\Debug\Client.FormIhm.csproj.GenerateResource.Cache
 C:\Users\Quentin\Documents\Visual Studio 2015\Projects\MyAirport_Debesson_Tischenbach\MyAirport.Pim\Client.FormIhm\bin\Debug\Client.FormIhm.exe
 C:\Users\Quentin\Documents\Visual Studio 2015\Projects\MyAirport_Debesson_Tischenbach\MyAirport.Pim\Client.FormIhm\bin\Debug\Client.FormIhm.pdb
-C:\Users\Quentin\Documents\Visual Studio 2015\Projects\MyAirport_Debesson_Tischenbach\MyAirport.Pim\Client.FormIhm\bin\Debug\Entities.dll
-C:\Users\Quentin\Documents\Visual Studio 2015\Projects\MyAirport_Debesson_Tischenbach\MyAirport.Pim\Client.FormIhm\bin\Debug\Service.dll
-C:\Users\Quentin\Documents\Visual Studio 2015\Projects\MyAirport_Debesson_Tischenbach\MyAirport.Pim\Client.FormIhm\bin\Debug\Model.Factory.dll
-C:\Users\Quentin\Documents\Visual Studio 2015\Projects\MyAirport_Debesson_Tischenbach\MyAirport.Pim\Client.FormIhm\bin\Debug\Model.AbstractDefinition.dll
-C:\Users\Quentin\Documents\Visual Studio 2015\Projects\MyAirport_Debesson_Tischenbach\MyAirport.Pim\Client.FormIhm\bin\Debug\Model.Sql.dll
-C:\Users\Quentin\Documents\Visual Studio 2015\Projects\MyAirport_Debesson_Tischenbach\MyAirport.Pim\Client.FormIhm\bin\Debug\Model.Natif.dll
-C:\Users\Quentin\Documents\Visual Studio 2015\Projects\MyAirport_Debesson_Tischenbach\MyAirport.Pim\Client.FormIhm\bin\Debug\Entities.pdb
-C:\Users\Quentin\Documents\Visual Studio 2015\Projects\MyAirport_Debesson_Tischenbach\MyAirport.Pim\Client.FormIhm\bin\Debug\Service.pdb
-C:\Users\Quentin\Documents\Visual Studio 2015\Projects\MyAirport_Debesson_Tischenbach\MyAirport.Pim\Client.FormIhm\bin\Debug\Model.Factory.pdb
-C:\Users\Quentin\Documents\Visual Studio 2015\Projects\MyAirport_Debesson_Tischenbach\MyAirport.Pim\Client.FormIhm\bin\Debug\Model.AbstractDefinition.pdb
-C:\Users\Quentin\Documents\Visual Studio 2015\Projects\MyAirport_Debesson_Tischenbach\MyAirport.Pim\Client.FormIhm\bin\Debug\Model.Sql.pdb
-C:\Users\Quentin\Documents\Visual Studio 2015\Projects\MyAirport_Debesson_Tischenbach\MyAirport.Pim\Client.FormIhm\bin\Debug\Model.Natif.pdb

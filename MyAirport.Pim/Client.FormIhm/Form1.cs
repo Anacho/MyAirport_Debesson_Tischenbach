@@ -1,16 +1,14 @@
 ﻿using System;
 using System.Windows.Forms;
-using MyAirport.Pim.Entities;
-using MyAirport.Serveur;
 
 namespace Client.FormIhm
 {
     public partial class Form1 : Form
     {
-        private readonly IService _service;
+        private readonly ServiceBagage.IService _service;
         public Form1()
         {
-            _service = new MyAirport.Serveur.Service();
+            _service = new ServiceBagage.ServiceClient();
             InitializeComponent();
         }
 
@@ -86,7 +84,7 @@ namespace Client.FormIhm
         {
             try
             {
-                var bagage = new BagageDefinition
+                var bagage = new ServiceBagage.BagageDefinition()
                 {
                     Compagnie = CompagnieTB.Text,
                     ClasseBagage = ClasseBagageTB.Text,

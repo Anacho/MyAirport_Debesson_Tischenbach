@@ -13,9 +13,6 @@ namespace MyAirport.Serveur
     public interface IService
     {
         [OperationContract]
-        string GetData(int value);
-
-        [OperationContract]
         BagageDefinition GetBagageById(int idBagage);
 
         [OperationContract]
