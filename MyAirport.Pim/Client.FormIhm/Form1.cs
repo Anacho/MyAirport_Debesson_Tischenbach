@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Windows.Forms;
+using Client.FormIhm.ServiceBagage;
 
 namespace Client.FormIhm
 {
@@ -82,19 +83,26 @@ namespace Client.FormIhm
 
         private void AjouterBtn_Click(object sender, EventArgs e)
         {
+            var bagage = new BagageDefinition();
             try
             {
-                var bagage = new ServiceBagage.BagageDefinition()
-                {
-                    Compagnie = CompagnieTB.Text,
-                    ClasseBagage = ClasseBagageTB.Text,
-                    CodeIata = codeIATATB.Text,
-                    Rush = RushCB.Checked,
-                    Continuation = ContinuationCB.Checked,
-                    JourExploitation = short.Parse(JourExploitTB.Text),
-                    Ligne = string.IsNullOrEmpty(Ligne1TB.Text) ? Ligne2TB.Text : Ligne1TB.Text,
-                    Itineraire = ItineraireTB.Text
-                };
+                bagage.Compagnie = CompagnieTB.Text;
+                bagage.ClasseBagage = ClasseBagageTB.Text;
+                bagage.CodeIata = codeIATATB.Text;
+                bagage.Rush = RushCB.Checked;
+                bagage.Continuation = ContinuationCB.Checked;
+                bagage.JourExploitation = short.Parse(JourExploitTB.Text);
+                bagage.Ligne = string.IsNullOrEmpty(Ligne1TB.Text) ? Ligne2TB.Text : Ligne1TB.Text;
+                bagage.Itineraire = ItineraireTB.Text;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Erreur dans la consistance des données. Les données saisies ne correspondent pas avec ce qui est attendu.", "Error!", MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
+                return;
+            }
+            try
+            { 
                 int nbLignes = _service.CreateBagage(bagage);
                 if (nbLignes == 1)
                 {
