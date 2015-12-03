@@ -28,7 +28,7 @@ namespace Model.Sql
         {
             using (SqlConnection cnx = new SqlConnection(strcnx))
             {
-                List<BagageDefinition> res_bag = null;
+                List<BagageDefinition> res_bag = new List<BagageDefinition>();
                 SqlCommand cmd = new SqlCommand(commandGetBagage, cnx);
                 cmd.Parameters.AddWithValue("@code", codeIATA);
                 cnx.Open();

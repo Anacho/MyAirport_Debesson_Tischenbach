@@ -26,3 +26,6 @@ C:\Users\Quentin\Documents\Visual Studio 2015\Projects\MyAirport_Debesson_Tische
 C:\Users\Quentin\Documents\Visual Studio 2015\Projects\MyAirport_Debesson_Tischenbach\MyAirport.Pim\Client.FormIhm\obj\Debug\Client.FormIhm.csproj.GenerateResource.Cache
 C:\Users\Quentin\Documents\Visual Studio 2015\Projects\MyAirport_Debesson_Tischenbach\MyAirport.Pim\Client.FormIhm\bin\Debug\Client.FormIhm.exe
 C:\Users\Quentin\Documents\Visual Studio 2015\Projects\MyAirport_Debesson_Tischenbach\MyAirport.Pim\Client.FormIhm\bin\Debug\Client.FormIhm.pdb
+C:\Users\Quentin\Documents\Visual Studio 2015\Projects\MyAirport_Debesson_Tischenbach\Client.FormIhm\bin\Debug\Client.FormIhm.exe.config
+C:\Users\Quentin\Documents\Visual Studio 2015\Projects\MyAirport_Debesson_Tischenbach\Client.FormIhm\obj\Debug\Client.FormIhm.exe
+C:\Users\Quentin\Documents\Visual Studio 2015\Projects\MyAirport_Debesson_Tischenbach\Client.FormIhm\obj\Debug\Client.FormIhm.pdb

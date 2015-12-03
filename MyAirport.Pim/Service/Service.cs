@@ -25,8 +25,9 @@ namespace MyAirport.Serveur
             {
                 res = Factory.Model.GetBagage(codeIata);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                string mes = ex.Message;
                 throw new FaultException("Erreur erreur s'est produite dans le traitement de la requête.");
             }
             if (res != null && res.Count > 0)

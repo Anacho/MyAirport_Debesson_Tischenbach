@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Globalization;
+using System.Linq;
 using System.ServiceModel;
 using System.Windows.Forms;
 using Client.FormIhm.ServiceBagage;
@@ -46,10 +47,9 @@ namespace Client.FormIhm
                 }
                 catch (FaultException<MultiBagageException> mbe)
                 {
-                    foreach (var bagage in mbe.Detail.resBagages)
-                    {
-                        printBagage(bagage);
-                    }
+                    string results = "Plusieurs bagages ont été trouvés. Voici les détails :\n\n" + mbe.Detail.resBagages.Aggregate<BagageDefinition, string>(null, (current, bagage) => current + printBagage(bagage));
+                    MessageBox.Show(results, "Plusieurs bagages trouvés !", MessageBoxButtons.OK,
+                        MessageBoxIcon.Information);
                 }
                 catch (ApplicationException appEx)
                 {
