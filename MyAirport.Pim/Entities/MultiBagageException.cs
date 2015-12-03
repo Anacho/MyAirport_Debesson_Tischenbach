@@ -10,4 +10,4 @@ namespace MyAirport.Pim.Entities
         [DataMember] public string CodeIATA;
         [DataMember] public string ErrorMessage;
     }
-}
+}   

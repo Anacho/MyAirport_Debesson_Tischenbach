@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Globalization;
 using System.ServiceModel;
 using System.Windows.Forms;
 using Client.FormIhm.ServiceBagage;
@@ -47,7 +48,7 @@ namespace Client.FormIhm
                 {
                     foreach (var bagage in mbe.Detail.resBagages)
                     {
-                        bagage.print();
+                        printBagage(bagage);
                     }
                 }
                 catch (ApplicationException appEx)
@@ -149,5 +150,27 @@ namespace Client.FormIhm
             AjouterBtn.Enabled = true;
             AnnulerBtn.Enabled = true;
         }
+
+        public string printBagage(BagageDefinition bag)
+        {
+            string str = "Code IATA : " + (NullIfEmpty(bag.CodeIata) ?? "N/D") + "\n";
+            str += "ID bagage : " + (NullIfEmpty(bag.IdBagage.ToString()) ?? "N/D") + "\n";
+            str += "Compagnie : " + (NullIfEmpty(bag.Compagnie) ?? "N/D") + "\n";
+            str += "Ligne : " + ((NullIfEmpty(bag.Ligne) ?? NullIfEmpty(bag.LigneAlpha.ToString())) ?? "N/D") + "\n";
+            str += "Date du vol : " + (NullIfEmpty(bag.DateVol.ToString(CultureInfo.CurrentCulture)) ?? "N/D") + "\n";
+            str += "Itinéraire : " + (NullIfEmpty(bag.Itineraire) ?? "N/D") + "\n";
+            str += "Classe bagage : " + (NullIfEmpty(bag.ClasseBagage) ?? "N/D") + "\n";
+            str += "Continuation : " + (NullIfEmpty(bag.Continuation.ToString()) ?? "N/D") + "\n";
+            str += "Rush : " + (NullIfEmpty(bag.Rush.ToString()) ?? "N/D") + "\n";
+            str += "Jour d'exploitation : " + (NullIfEmpty(bag.JourExploitation.ToString()) ?? "N/D") + "\n\n";
+
+            return str;
+        }
+
+        private string NullIfEmpty(string str)
+        {
+            return string.IsNullOrEmpty(str) ? null : str;
+        }
+
     }
 }

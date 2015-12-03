@@ -1,4 +1,6 @@
 ﻿using System;
+using System.ComponentModel;
+using System.Globalization;
 using System.Runtime.Serialization;
 
 namespace MyAirport.Pim.Entities
