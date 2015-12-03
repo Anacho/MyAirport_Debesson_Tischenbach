@@ -31,7 +31,6 @@ namespace Service.Host
             host.Opened += host_StateChanged;
 
             this.textBox1.Text = host.State.ToString();
-            LogLB.Items.Clear();
             LogLB.Items.Add("Création du service. ");
             host_StateChanged(this, null);
 
@@ -44,7 +43,6 @@ namespace Service.Host
                 try
                 {
                     host.Open();
-                    LogLB.Items.Clear();
                     foreach (var ep in this.host.Description.Endpoints)
                     {
                         this.LogLB.Items.Add(ep.Address);
@@ -62,7 +60,6 @@ namespace Service.Host
                 try
                 {
                     host.Close();
-                    LogLB.Items.Clear();
                     textBox1.Text = host.State.ToString();
                 }
                 catch (Exception ex)
@@ -101,7 +98,7 @@ namespace Service.Host
                     }
                 }
                 this.textBox1.Text = this.host.State.ToString();
-                this.LogLB.Items.Add("Changement d'état : " + this.host.State);
+                this.listBox1.Items.Add("Changement d'état : " + this.host.State);
             }
             else
             {

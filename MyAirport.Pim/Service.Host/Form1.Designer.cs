@@ -34,6 +34,7 @@
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.LogLB = new System.Windows.Forms.ListBox();
+            this.listBox1 = new System.Windows.Forms.ListBox();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -59,7 +60,7 @@
             // 
             // OpenButton
             // 
-            this.OpenButton.Location = new System.Drawing.Point(318, 71);
+            this.OpenButton.Location = new System.Drawing.Point(101, 71);
             this.OpenButton.Name = "OpenButton";
             this.OpenButton.Size = new System.Drawing.Size(75, 23);
             this.OpenButton.TabIndex = 2;
@@ -77,6 +78,7 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.listBox1);
             this.groupBox1.Controls.Add(this.textBox1);
             this.groupBox1.Controls.Add(this.OpenButton);
             this.groupBox1.Controls.Add(this.label1);
@@ -95,6 +97,14 @@
             this.LogLB.Name = "LogLB";
             this.LogLB.Size = new System.Drawing.Size(399, 316);
             this.LogLB.TabIndex = 5;
+            // 
+            // listBox1
+            // 
+            this.listBox1.FormattingEnabled = true;
+            this.listBox1.Location = new System.Drawing.Point(190, 11);
+            this.listBox1.Name = "listBox1";
+            this.listBox1.Size = new System.Drawing.Size(203, 82);
+            this.listBox1.TabIndex = 4;
             // 
             // Form1
             // 
@@ -119,6 +129,7 @@
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.ListBox LogLB;
+        private System.Windows.Forms.ListBox listBox1;
     }
 }
 

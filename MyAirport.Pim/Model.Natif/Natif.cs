@@ -10,7 +10,7 @@ namespace MyAirport.Pim.Model
 {
     public class Natif : AbstractDefinition
     {
-        public override BagageDefinition GetBagage(string codeIATA)
+        public override List<BagageDefinition> GetBagage(string codeIATA)
         {
             return null;
         }

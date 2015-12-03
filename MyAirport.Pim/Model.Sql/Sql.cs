@@ -18,17 +18,17 @@ namespace Model.Sql
             ConfigurationManager.ConnectionStrings["MyAirport.Pim.Settings.DbConnect"].ConnectionString;
 
         private string commandGetBagage =
-            "select ID_BAGAGE, COMPAGNIE, LIGNE, DESTINATION, CLASSE, CODE_IATA, EN_CONTINUATION, PRIORITAIRE, JOUR_EXPLOITATION FROM BAGAGE b WHERE b.CODE_IATA = @code";
+            "select ID_BAGAGE, COMPAGNIE, LIGNE, DESTINATION, CLASSE, CODE_IATA, EN_CONTINUATION, PRIORITAIRE, JOUR_EXPLOITATION FROM BAGAGE  WHERE BAGAGE.CODE_IATA = @code";
 
         private string commandInsertBagage =
             "INSERT INTO BAGAGE (CODE_IATA, COMPAGNIE, LIGNE, CLASSE, DESTINATION, EN_CONTINUATION, PRIORITAIRE, JOUR_EXPLOITATION, DATE_CREATION, ORIGINE_CREATION, ORIGINE_SAFIR, EN_TRANSFERT) " +
             "VALUES (@codeIata, @compagnie, @ligne, @classe, @itineraire, @continuation, @rush, @jourExploit, @dateCreation, @origineCreation, @origineSafir, @enTransfert)";
 
-        public override BagageDefinition GetBagage(string codeIATA)
+        public override List<BagageDefinition> GetBagage(string codeIATA)
         {
             using (SqlConnection cnx = new SqlConnection(strcnx))
             {
-                BagageDefinition bag = null;
+                List<BagageDefinition> res_bag = null;
                 SqlCommand cmd = new SqlCommand(commandGetBagage, cnx);
                 cmd.Parameters.AddWithValue("@code", codeIATA);
                 cnx.Open();
@@ -37,10 +37,9 @@ namespace Model.Sql
                 using (SqlDataReader reader = cmd.ExecuteReader())
                 {
                     //Au moins un bagage a été trouvé
-                    if (reader.Read())
+                    while (reader.Read())
                     {
-
-                        bag = new BagageDefinition();
+                        BagageDefinition bag = new BagageDefinition();
                         bag.IdBagage = reader.GetFieldValue<int>(reader.GetOrdinal("ID_BAGAGE"));
                         bag.Compagnie = reader.GetFieldValue<string>(reader.GetOrdinal("COMPAGNIE"));
                         bag.Ligne = reader.GetFieldValue<string>(reader.GetOrdinal("LIGNE"));
@@ -52,15 +51,13 @@ namespace Model.Sql
                         bag.Continuation = reader.GetFieldValue<bool>(reader.GetOrdinal("EN_CONTINUATION"));
                         bag.Rush = reader.GetFieldValue<bool>(reader.GetOrdinal("PRIORITAIRE"));
                         bag.JourExploitation = reader.GetFieldValue<short>(reader.GetOrdinal("JOUR_EXPLOITATION"));
-                    }
-                    if (reader.Read())
-                    {
-                        throw new ApplicationException("Erreur. Trop de résultats.");
+
+                        res_bag.Add(bag);
                     }
                 }
                 #endregion
                 cnx.Close();
-                return bag;
+                return res_bag;
             }
         }
 

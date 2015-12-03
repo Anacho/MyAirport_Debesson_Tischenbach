@@ -19,7 +19,34 @@ namespace MyAirport.Serveur
 
         public BagageDefinition GetBagageByCodeIata(string codeIata)
         {
-            return Factory.Model.GetBagage(codeIata);
+            List<BagageDefinition> res = null;
+
+            try
+            {
+                res = Factory.Model.GetBagage(codeIata);
+            }
+            catch (Exception)
+            {
+                throw new FaultException("Erreur erreur s'est produite dans le traitement de la requête.");
+            }
+            if (res != null && res.Count > 0)
+            {
+                if (res.Count == 1)
+                {
+                    return res[0];
+                }
+                else
+                {
+                    MultiBagageException mbe = new MultiBagageException
+                    {
+                        CodeIATA = codeIata,
+                        resBagages = res,
+                        ErrorMessage = "Plusieurs bagages ont été trouvés."
+                    };
+                    throw new FaultException<MultiBagageException>(mbe);
+                }
+            }
+            return null;
         }
 
         public int CreateBagage(BagageDefinition bagage)

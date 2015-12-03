@@ -15,6 +15,7 @@ namespace MyAirport.Serveur
         [OperationContract]
         BagageDefinition GetBagageById(int idBagage);
 
+        [FaultContract(typeof(MultiBagageException))]
         [OperationContract]
         BagageDefinition GetBagageByCodeIata(string codeIata);
 
