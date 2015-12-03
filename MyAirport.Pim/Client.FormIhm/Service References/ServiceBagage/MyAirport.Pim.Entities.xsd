@@ -17,6 +17,20 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="BagageDefinition" nillable="true" type="tns:BagageDefinition" />
+  <xs:complexType name="MultiBagageException">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="CodeIATA" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ErrorMessage" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="resBagages" nillable="true" type="tns:ArrayOfBagageDefinition" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="MultiBagageException" nillable="true" type="tns:MultiBagageException" />
+  <xs:complexType name="ArrayOfBagageDefinition">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="BagageDefinition" nillable="true" type="tns:BagageDefinition" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfBagageDefinition" nillable="true" type="tns:ArrayOfBagageDefinition" />
   <xs:complexType name="RoutageBagage">
     <xs:sequence>
       <xs:element minOccurs="0" name="LocalisationEjection" type="xs:int" />

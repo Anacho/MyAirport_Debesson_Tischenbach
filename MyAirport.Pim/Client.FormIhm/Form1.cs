@@ -1,4 +1,5 @@
 ﻿using System;
+using System.ServiceModel;
 using System.Windows.Forms;
 using Client.FormIhm.ServiceBagage;
 
@@ -6,10 +7,10 @@ namespace Client.FormIhm
 {
     public partial class Form1 : Form
     {
-        private readonly ServiceBagage.IService _service;
+        private readonly IService _service;
         public Form1()
         {
-            _service = new ServiceBagage.ServiceClient();
+            _service = new ServiceClient();
             InitializeComponent();
         }
 
@@ -33,7 +34,7 @@ namespace Client.FormIhm
                         ItineraireTB.Text = bagage.Itineraire;
                         ItineraireTB.Enabled = false;
                         ClasseBagageTB.Text = bagage.ClasseBagage;
-                        ClasseBagageTB.Enabled = false;;
+                        ClasseBagageTB.Enabled = false;
                         ContinuationCB.Checked = bagage.Continuation;
                         ContinuationCB.Enabled = false;
                         RushCB.Checked = bagage.Rush;
@@ -42,11 +43,19 @@ namespace Client.FormIhm
                         AjouterBtn.Enabled = false;
                     }
                 }
+                catch (FaultException<MultiBagageException> mbe)
+                {
+                    foreach (var bagage in mbe.Detail.resBagages)
+                    {
+                        bagage.print();
+                    }
+                }
                 catch (ApplicationException appEx)
                 {
                     ContinuationCB.Checked = RushCB.Checked = false;
-                    CompagnieTB.Enabled = Ligne1TB.Enabled = Ligne2TB.Enabled = JourExploitTB.Enabled = ItineraireTB.Enabled =
-                        ClasseBagageTB.Enabled = ContinuationCB.Enabled = RushCB.Enabled = true;
+                    CompagnieTB.Enabled =
+                        Ligne1TB.Enabled = Ligne2TB.Enabled = JourExploitTB.Enabled = ItineraireTB.Enabled =
+                            ClasseBagageTB.Enabled = ContinuationCB.Enabled = RushCB.Enabled = true;
                     codeIATATB.Enabled = false;
 
                     CompagnieTB.Text =
