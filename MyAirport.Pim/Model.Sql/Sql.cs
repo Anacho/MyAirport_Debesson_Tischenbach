@@ -4,6 +4,7 @@ using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
+using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 using MyAirport.Pim.Entities;
@@ -31,6 +32,7 @@ namespace Model.Sql
                 SqlCommand cmd = new SqlCommand(commandGetBagage, cnx);
                 cmd.Parameters.AddWithValue("@code", codeIATA);
                 cnx.Open();
+                cmd.CommandTimeout = 600;
                 #region reader
                 using (SqlDataReader reader = cmd.ExecuteReader())
                 {
