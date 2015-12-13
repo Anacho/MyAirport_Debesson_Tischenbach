@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
 using System.ServiceModel;
@@ -10,6 +11,10 @@ namespace Client.FormIhm
     public partial class Form1 : Form
     {
         private readonly IService _service;
+        private int _numBagage = 1;
+        private List<BagageDefinition> resBagage;
+        private int countBagage = 1;
+
         public Form1()
         {
             _service = new ServiceClient();
@@ -18,6 +23,7 @@ namespace Client.FormIhm
 
         private void button1_Click(object sender, EventArgs e)
         {
+            ResetBagages();
             if (codeIATATB.Text != null)
             {
                 try
@@ -25,33 +31,29 @@ namespace Client.FormIhm
                     var bagage = _service.GetBagageByCodeIata(codeIATATB.Text);
                     if (bagage != null)
                     {
-                        CompagnieTB.Text = bagage.Compagnie;
-                        CompagnieTB.Enabled = false;
-                        Ligne1TB.Text = bagage.Ligne;
-                        Ligne1TB.Enabled = false;
-                        Ligne2TB.Text = bagage.LigneAlpha.ToString();
-                        Ligne2TB.Enabled = false;
-                        JourExploitTB.Text = bagage.JourExploitation.ToString();
-                        JourExploitTB.Enabled = false;
-                        ItineraireTB.Text = bagage.Itineraire;
-                        ItineraireTB.Enabled = false;
-                        ClasseBagageTB.Text = bagage.ClasseBagage;
-                        ClasseBagageTB.Enabled = false;
-                        ContinuationCB.Checked = bagage.Continuation;
-                        ContinuationCB.Enabled = false;
-                        RushCB.Checked = bagage.Rush;
-                        RushCB.Enabled = false;
-
-                        AjouterBtn.Enabled = false;
+                        SendBagageToScreen(bagage);
                     }
+                    else
+                        MessageBox.Show(
+                            "Aucun bagage trouvé. Souhaitez-vous en créer un ? Vous pouvez également essayer avec un autre Code IATA.",
+                            "Aucun bagage", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
                 catch (FaultException<MultiBagageException> mbe)
                 {
-                    string results = "Plusieurs bagages ont été trouvés. Voici les détails :\n\n" + mbe.Detail.resBagages.Aggregate<BagageDefinition, string>(null, (current, bagage) => current + printBagage(bagage));
-                    MessageBox.Show(results, "Plusieurs bagages trouvés !", MessageBoxButtons.OK,
+                    countBagage = mbe.Detail.resBagages.Count();
+                    updateBagagePages();
+                    resBagage = new List<BagageDefinition>(mbe.Detail.resBagages);
+                    SendBagageToScreen(resBagage[_numBagage-1]);
+
+                    MessageBox.Show("Plusieurs bagages ont été trouvés. Vous pouvez naviguer entre les différents résultats à l'aide des boutons \"Précédent\" et \"Suivant\" situés en bas à gauche.", "Plusieurs bagages trouvés !", MessageBoxButtons.OK,
                         MessageBoxIcon.Information);
                 }
-                catch (ApplicationException appEx)
+                catch (CommunicationException)
+                {
+                    MessageBox.Show("Impossible de contacter le serveur. Veuillez contacter votre administrateur.",
+                        "Erreur de communication", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                catch (ApplicationException)
                 {
                     ContinuationCB.Checked = RushCB.Checked = false;
                     CompagnieTB.Enabled =
@@ -63,8 +65,11 @@ namespace Client.FormIhm
                         Ligne1TB.Text =
                             Ligne2TB.Text = JourExploitTB.Text = ItineraireTB.Text = ClasseBagageTB.Text = "";
 
+                    MessageBox.Show("Opération impossible. Veuillez réessayer plus tard ou contacter un administrateur.",
+                        "Erreur applicative", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
                 }
-                catch(Exception ex)
+                catch(Exception)
                 {
                     MessageBox.Show("Une erreur s’est produite.\nMerci de bien vouloir réessayer ultérieurement ou de contacter votre administrateur.", "Erreur !", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
@@ -105,7 +110,7 @@ namespace Client.FormIhm
                 bagage.Ligne = string.IsNullOrEmpty(Ligne1TB.Text) ? Ligne2TB.Text : Ligne1TB.Text;
                 bagage.Itineraire = ItineraireTB.Text;
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 MessageBox.Show("Erreur dans la consistance des données. Les données saisies ne correspondent pas avec ce qui est attendu.", "Error!", MessageBoxButtons.OK,
                     MessageBoxIcon.Error);
@@ -131,7 +136,7 @@ namespace Client.FormIhm
                         nbLignes + " lignes ont été ajoutées.", "?", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 MessageBox.Show("Une erreur s’est produite.\nMerci de bien vouloir réessayer ultérieurement ou de contacter votre administrateur.", "Erreur !", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
@@ -139,16 +144,8 @@ namespace Client.FormIhm
 
         private void AnnulerBtn_Click(object sender, EventArgs e)
         {
-            ContinuationCB.Checked = RushCB.Checked = false;
-            CompagnieTB.Enabled = Ligne1TB.Enabled = Ligne2TB.Enabled = JourExploitTB.Enabled = ItineraireTB.Enabled = codeIATATB.Enabled =
-                ClasseBagageTB.Enabled = ContinuationCB.Enabled = RushCB.Enabled = true;
-
-            CompagnieTB.Text =
-                       Ligne1TB.Text =
-                           Ligne2TB.Text = JourExploitTB.Text = ItineraireTB.Text = ClasseBagageTB.Text = codeIATATB.Text = "";
-
-            AjouterBtn.Enabled = true;
-            AnnulerBtn.Enabled = true;
+            ResetBagages();
+            codeIATATB.Text = "";
         }
 
         public string printBagage(BagageDefinition bag)
@@ -167,10 +164,75 @@ namespace Client.FormIhm
             return str;
         }
 
+        private void SendBagageToScreen(BagageDefinition bagage)
+        {
+            CompagnieTB.Text = bagage.Compagnie;
+            CompagnieTB.Enabled = false;
+            Ligne1TB.Text = bagage.Ligne;
+            Ligne1TB.Enabled = false;
+            Ligne2TB.Text = bagage.LigneAlpha.ToString();
+            Ligne2TB.Enabled = false;
+            JourExploitTB.Text = bagage.JourExploitation.ToString();
+            JourExploitTB.Enabled = false;
+            ItineraireTB.Text = bagage.Itineraire;
+            ItineraireTB.Enabled = false;
+            ClasseBagageTB.Text = bagage.ClasseBagage;
+            ClasseBagageTB.Enabled = false;
+            ContinuationCB.Checked = bagage.Continuation;
+            ContinuationCB.Enabled = false;
+            RushCB.Checked = bagage.Rush;
+            RushCB.Enabled = false;
+
+            AjouterBtn.Enabled = false;
+        }
+
         private string NullIfEmpty(string str)
         {
             return string.IsNullOrEmpty(str) ? null : str;
         }
 
+        private void SuivantButton_Click(object sender, EventArgs e)
+        {
+            if (_numBagage != countBagage)
+            {
+                _numBagage++;
+                SendBagageToScreen(resBagage[_numBagage-1]);
+                updateBagagePages();
+            }
+        }
+
+        private void PrecedentButton_Click(object sender, EventArgs e)
+        {
+            if (_numBagage != 1)
+            {
+                _numBagage--;
+                SendBagageToScreen(resBagage[_numBagage - 1]);
+                updateBagagePages();
+            }
+        }
+
+        private void updateBagagePages()
+        {
+            NbPagesLabel.Text = _numBagage + "/" + countBagage;
+        }
+
+        private void ResetBagages()
+        {
+            ContinuationCB.Checked = RushCB.Checked = false;
+            CompagnieTB.Enabled = Ligne1TB.Enabled = Ligne2TB.Enabled = JourExploitTB.Enabled = ItineraireTB.Enabled = codeIATATB.Enabled =
+                ClasseBagageTB.Enabled = ContinuationCB.Enabled = RushCB.Enabled = true;
+
+            CompagnieTB.Text =
+                       Ligne1TB.Text =
+                           Ligne2TB.Text = JourExploitTB.Text = ItineraireTB.Text = ClasseBagageTB.Text = "";
+
+            AjouterBtn.Enabled = true;
+            AnnulerBtn.Enabled = true;
+
+            _numBagage = 1;
+            countBagage = 1;
+            resBagage = new List<BagageDefinition>();
+            updateBagagePages();
+        }
     }
 }

@@ -50,6 +50,9 @@
             this.CompagnieTB = new System.Windows.Forms.TextBox();
             this.AnnulerBtn = new System.Windows.Forms.Button();
             this.AjouterBtn = new System.Windows.Forms.Button();
+            this.PrecedentButton = new System.Windows.Forms.Button();
+            this.SuivantButton = new System.Windows.Forms.Button();
+            this.NbPagesLabel = new System.Windows.Forms.Label();
             this.Recherche.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -268,11 +271,44 @@
             this.AjouterBtn.UseVisualStyleBackColor = true;
             this.AjouterBtn.Click += new System.EventHandler(this.AjouterBtn_Click);
             // 
+            // PrecedentButton
+            // 
+            this.PrecedentButton.Location = new System.Drawing.Point(22, 369);
+            this.PrecedentButton.Name = "PrecedentButton";
+            this.PrecedentButton.Size = new System.Drawing.Size(75, 23);
+            this.PrecedentButton.TabIndex = 5;
+            this.PrecedentButton.Text = "Précédent";
+            this.PrecedentButton.UseVisualStyleBackColor = true;
+            this.PrecedentButton.Click += new System.EventHandler(this.PrecedentButton_Click);
+            // 
+            // SuivantButton
+            // 
+            this.SuivantButton.Location = new System.Drawing.Point(153, 368);
+            this.SuivantButton.Name = "SuivantButton";
+            this.SuivantButton.Size = new System.Drawing.Size(75, 23);
+            this.SuivantButton.TabIndex = 6;
+            this.SuivantButton.Text = "Suivant";
+            this.SuivantButton.UseVisualStyleBackColor = true;
+            this.SuivantButton.Click += new System.EventHandler(this.SuivantButton_Click);
+            // 
+            // NbPagesLabel
+            // 
+            this.NbPagesLabel.AutoSize = true;
+            this.NbPagesLabel.Location = new System.Drawing.Point(111, 374);
+            this.NbPagesLabel.Name = "NbPagesLabel";
+            this.NbPagesLabel.Size = new System.Drawing.Size(24, 13);
+            this.NbPagesLabel.TabIndex = 7;
+            this.NbPagesLabel.Text = "1/1";
+            this.NbPagesLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(550, 404);
+            this.Controls.Add(this.NbPagesLabel);
+            this.Controls.Add(this.SuivantButton);
+            this.Controls.Add(this.PrecedentButton);
             this.Controls.Add(this.AjouterBtn);
             this.Controls.Add(this.AnnulerBtn);
             this.Controls.Add(this.groupBox1);
@@ -288,6 +324,7 @@
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -315,6 +352,9 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button AnnulerBtn;
         private System.Windows.Forms.Button AjouterBtn;
+        private System.Windows.Forms.Button PrecedentButton;
+        private System.Windows.Forms.Button SuivantButton;
+        private System.Windows.Forms.Label NbPagesLabel;
     }
 }
 
