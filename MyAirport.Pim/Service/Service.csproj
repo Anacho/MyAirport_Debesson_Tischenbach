@@ -61,11 +61,6 @@
     <Compile Include="Service.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config">
-      <SubType>Designer</SubType>
-    </None>
-  </ItemGroup>
-  <ItemGroup>
     <ProjectReference Include="..\Entities\Entities.csproj">
       <Project>{0147f9a9-1ef4-428c-8c8d-6e84bba622d6}</Project>
       <Name>Entities</Name>
